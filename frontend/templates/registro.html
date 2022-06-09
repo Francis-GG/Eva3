@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css"
+    integrity="sha256-dLfDnFtstI791pbYZLjLRY2JSQSoJ4t3Q3rw0cQLQr4=" crossorigin="anonymous" />    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Productos</title>
+</head>
+<body background="{% static 'leavesbackground.jpeg' %}">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index'%}">Plantéatelo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index'%}">Inicio </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'productos'%}">Comprar</a>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bored'%}">Aburrimiento ?</a>
+            </a>
+          </li>
+              </div>
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Usuario
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Ingresar</a></li>
+                  <li><a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a></li>
+                </ul>
+                <a class="btn btn-primary" href="{% url 'carro'%}" role="button">Carro</a>
+              </li>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row" >
+      <div class="col-4" >
+      <div id="resultadoValidacion">
+      </div>
+  
+      <form id="registrarDatos" name="registrarDatos" action="#" method="post">
+          <fieldset>
+              <legend>Formulario de Registro</legend>
+              <div class="form-control">
+                  <label for="correo">Correo (obligatorio):</label>
+                  <input type="text" id="correo" name="correo" class="validate[required,custom[email]]"
+                      data-errormessage-value-missing="El campo Correo es obligatorio"
+                      data-errormessage-custom-error="Formato: usuario@mail.com" value="" />
+              </div>
+      
+              <div class="form-control">
+                  <label for="nombre">Contraseña (obligatorio):</label>
+                  <input type="password" id="pass" name="pass" class="validate[required]"
+                      data-errormessage-value-missing="El campo Contraseña es obligatorio" value="" />
+              </div>
+  
+              <div class="form-group"> <!-- Botón Enviar --> 
+                <input type="submit" value="Envío de datos" class="btn btn-primary">
+                <input type="reset" value="Limpiar" class="btn btn-warning">  
+          </fieldset>
+      </form>
+    </div>
+    </div>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery-1.8.2.min.js"
+          integrity="sha256-8j1LMJtydDqor+H4yYols+4xJG+lcsZtnYyxmCyuT7w=" crossorigin="anonymous"></script>
+      <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-es.min.js"
+          integrity="sha256-MeuxqxFPW1ASZACg9TcTHHIbkBuorhSxRvu2XZkDptM=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js"
+          integrity="sha256-HbcATM0NJnF2rpBm+By+JrAikXdPlIujXNosIDzbllA=" crossorigin="anonymous"></script>
+  
+      <script>
+          $(document).ready(() => {
+              $('#registrarDatos').validationEngine();
+          });
+      </script>
+  </body>
+  
+  </html>

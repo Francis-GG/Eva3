@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="{% static 'styles.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Aburrido ?</title>
+</head>
+<body background="{%static 'leavesbackground.jpeg' %}">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="">Plantéatelo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index' %}">Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}">Comprar</a>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'bored' %}">Aburrimiento ?</a>
+                </a>
+              </li>
+                  </div>
+                  <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Usuario
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Ingresar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a></li>
+                    </ul>
+                    <a class="btn btn-primary" href="{% url 'carro'%}" role="button">Carro</a>
+                  </li>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="container-fluid">
+          <div class="col">
+            <div class="card text-center">
+              <div class="card-header">
+                No sabes que hacer ? Aquí te recomendamos actividades para combatir el aburrimiento.
+              </div>
+              <div class="card-body">
+                <p class="card-title" id="activity"></p>
+                <p class="card-text" id="type"></p>
+                <p class="card-text" id="price"></p>
+                <p class="card-text" id="accessibility"></p>
+                <a onclick="doApiRequest()" class="btn btn-primary">Actividad</a>
+              </div>
+              <div class="card-footer text-muted" id="participants">
+              </div> 
+              </div>
+            </div>
+        </div>
+
+        <!-- Función para llamar API -->
+        <script>
+          function doApiRequest() {
+              $.ajax({
+              type: 'GET',
+              url: "https://www.boredapi.com/api/activity",
+              success: function (data) {
+                  console.log("Success", data) 
+                  document.getElementById("activity").textContent = "Actividad: " + data.activity;
+                  document.getElementById("type").textContent = "Tipo de actividad: " + data.type;
+                  document.getElementById("participants").textContent = "Participantes: " + data.participants;
+                  document.getElementById("price").textContent = "Costo: " + data.price;
+                  document.getElementById("accessibility") = "Dificultad de acceso a la actividad: " + data.accessibility;
+              }
+              });
+          }          
+      </script>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      
+</body>
+</html>

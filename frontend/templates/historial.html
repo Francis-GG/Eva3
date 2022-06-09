@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'historystyles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Historial de compras</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index'%}">Plantéatelo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index'%}">Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos'%}">Comprar</a>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'bored'%}">Aburrimiento ?</a>
+                </a>
+              </li>
+                  </div>
+                  <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Usuario
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Ingresar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a></li>
+                    </ul>
+                    <a class="btn btn-primary" href="{% url 'carro'%}" role="button">Carro</a>
+                  </li>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card" >
+                        <div class="title">Comprobante de compra</div>
+                        <div class="info">
+                            <div class="row">
+                                <div class="col-7"> <span id="heading">Fecha</span><br> <span id="details">3 Abril 2022</span> </div>
+                                <div class="col-5 pull-right"> <span id="heading">Nº Orden:</span><br> <span id="details">32891512</span> </div>
+                            </div>
+                        </div>
+                        <div class="pricing">
+                            <div class="row">
+                                <div class="col-9"> <span id="name">Regadera plástica</span> </div>
+                                <div class="col-3"> <span id="price">$13.900</span> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9"> <span id="name">Despacho</span> </div>
+                                <div class="col-3"> <span id="price">$0</span> </div>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3"><big>$13.900</big></div>
+                            </div>
+                        </div>
+                        <div class="tracking">
+                            <div class="title">Seguimiento despacho</div>
+                        </div>
+                        <div class="progress-track">
+                            <ul id="progressbar">
+                                <li class="step0 active " id="step1">Comprado</li>
+                                <li class="step0 active text-center" id="step2">En preparación</li>
+                                <li class="step0 active text-right" id="step3">En camino</li>
+                                <li class="step0 text-right" id="step4">Entregado</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

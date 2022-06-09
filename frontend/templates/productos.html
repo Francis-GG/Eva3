@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load humanize %}
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Productos</title>
+</head>
+<body background="{% static 'leavesbackground.jpeg' %}">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index'%}">Plantéatelo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index'%}">Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos'%}">Comprar</a>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'bored'%}">Aburrimiento ?</a>
+                </a>
+              </li>
+                  </div>
+                  <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Usuario
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Ingresar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a></li>
+                    </ul>
+                    <a class="btn btn-primary" href="{% url 'carro'%}" role="button">Carro</a>
+                  </li>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+<div class="container fluid">
+    <div class="row">
+            {% for producto in productos %}
+            <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-img-actions"> <img src="{% static 'img/'%}{{producto.nombreArchivo}}" class="card-img img-fluid" width="96" height="350" alt="Macetero madera"> </div>
+                            </div>
+                            <div class="card-body bg-light text-center">
+                                <div class="mb-2">
+                                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">{{producto.nombreProducto}}</a> </h6> <a href="#" class="text-muted" data-abc="true">{{categoria.nombreCategoria}}</a>
+                                </div>
+                                <h3 class="mb-0 font-weight-semibold">${{producto.precioProducto}}</h3>
+                                <div class="text-muted mb-3">{{producto.stockProducto|intcomma}} disponibles</div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Añadir al carro</button>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function (){
+            $.ajax({
+
+            });
+        });
+    </script>
+</body>
+</html>

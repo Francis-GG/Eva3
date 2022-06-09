@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'cartstyles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css"
+    integrity="sha256-dLfDnFtstI791pbYZLjLRY2JSQSoJ4t3Q3rw0cQLQr4=" crossorigin="anonymous" />    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Formulario pago</title>
+</head>
+<body background="{% static 'leavesbackground.jpeg' %}">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index'%}">Plantéatelo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index'%}">Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos'%}">Comprar</a>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'bored'%}">Aburrimiento ?</a>
+                </a>
+              </li>
+                  </div>
+                  <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Usuario
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Ingresar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'registro'%}">Registrarse</a></li>
+                    </ul>
+                    <a class="btn btn-primary" href="{% url 'carro' %}" role="button">Carro</a>
+                  </li>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+          </nav>
+        </div>
+        <section class="h-100 gradient-custom">
+            <div class="container py-5">
+            <div class="row d-flex justify-content-center my-4">
+                <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                    </div>
+                    <form id="DatosPago" name="DatosPago" action="#" method="post">
+                        <fieldset>
+                            <legend>Datos de Pago</legend>
+                            <div class="form-control">
+                                <label for="nombre">Nombre (obligatorio):</label>
+                                <input type="text" id="nombre" name="nombre" class="validate[required]"
+                                    data-errormessage-value-missing="El campo Nombre es obligatorio"
+                                    data-errormessage-custom-error="Formato: usuario@mail.com" value="" />
+                            </div>
+                    
+                            <div class="form-control">
+                                <label for="apellido">Apellido (obligatorio):</label>
+                                <input type="text" id="apellido" name="apellido" class="validate[required]"
+                                    data-errormessage-value-missing="El campo Apellido es obligatorio" value="" />
+                            </div>
+
+                            <div class="form-control">
+                                <label for="region">Región (obligatorio):</label>
+                                <select id="region" name="region">
+                                    <option value="Arica-Parinacota">Arica-Parinacota</option>
+                                    <option value="Tarapaca">Tarapacá</option>
+                                    <option value="Antofagasta">Antofagasta</option>
+                                    <option value="Atacama">Atacama</option>
+                                    <option value="Coquimbo">Coquimbo</option>
+                                    <option value="Valparaíso">Valparaíso</option>
+                                    <option value="Metropolitana">Metropolitana</option>
+                                    <option value="OHiggins">O'Higgins</option>
+                                    <option value="Maule">Maule</option>
+                                    <option value="Nuble">Ñuble</option>
+                                    <option value="Bio Bio">Bío Bío</option>
+                                    <option value="Araucania">Araucanía</option>
+                                    <option value="Los Rios">Los Ríos</option>
+                                    <option value="Los Lagos">Los Lagos</option>
+                                    <option value="Aysen">Aysén</option>
+                                    <option value="Magallanes y Antartica Chilena">Magallanes y Antártica Chilena</option>
+                                </select>
+                            </div>
+
+                            <div class="form-control">
+                                <label for="direccion">Dirección (obligatorio):</label>
+                                <input type="text" id="direccion" name="direccion" class="validate[required]"
+                                    data-errormessage-value-missing="El campo Dirección es obligatorio" value="" />
+                            </div>
+
+                            <div class="form-control">
+                                <label for="tarjeta">Número de tarjeta (obligatorio):</label>
+                                <input type="text" id="tarjeta" name="tarjeta" class="validate[required[creditCard]]"
+                                    data-errormessage-value-missing="El campo Número de tarjeta es obligatorio" value="" />
+                            </div>
+                
+                            <div class="form-group"> <!-- Botón Enviar --> 
+                              <input type="submit" value="Envío de datos" class="btn btn-primary">
+                              <input type="reset" value="Limpiar" class="btn btn-warning">  
+                        </fieldset>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery-1.8.2.min.js"
+          integrity="sha256-8j1LMJtydDqor+H4yYols+4xJG+lcsZtnYyxmCyuT7w=" crossorigin="anonymous"></script>
+      <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-es.min.js"
+          integrity="sha256-MeuxqxFPW1ASZACg9TcTHHIbkBuorhSxRvu2XZkDptM=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js"
+          integrity="sha256-HbcATM0NJnF2rpBm+By+JrAikXdPlIujXNosIDzbllA=" crossorigin="anonymous"></script>
+  
+      <script>
+          $(document).ready(() => {
+              $('#DatosPago').validationEngine();
+          });
+      </script>
+</body>
+
+</html>
