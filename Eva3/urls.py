@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from frontend import views
+from frontend import views as viewsfront
 from frontend.models import producto, categoria
+from backend import views as viewsback
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index"),
-    path('bored/', views.bored, name="bored"),
-    path('carro/', views.carro, name="carro"),
-    path('historial/', views.historial, name="historial"),
-    path('pago/', views.pago, name="pago"),
-    path('productos/', views.productos, name="productos"),
-    path('registro/', views.registro, name="registro"),
+    path('', viewsfront.index, name="index"),
+    path('bored/', viewsfront.bored, name="bored"),
+    path('carro/', viewsfront.carro, name="carro"),
+    path('historial/', viewsfront.historial, name="historial"),
+    path('pago/', viewsfront.pago, name="pago"),
+    path('productos/', viewsfront.productos, name="productos"),
+    path('registro/', viewsfront.registro, name="registro"),
+    path('login/', viewsback.login, name="login"),
 ]
