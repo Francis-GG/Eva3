@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from frontend import views as viewsfront
-from frontend.models import producto, categoria
 from backend import views as viewsback
 
 urlpatterns = [
@@ -29,4 +28,6 @@ urlpatterns = [
     path('productos/', viewsfront.productos, name="productos"),
     path('registro/', viewsfront.registro, name="registro"),
     path('login/', viewsback.login, name="login"),
+    path('validarUsuario/', viewsback.validarUsuario),
+    path('indexback/', viewsback.indexBack),
 ]
