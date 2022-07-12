@@ -4,9 +4,6 @@ from backend.forms import UsuarioForm
 from .models import Usuario
 from django.http import HttpResponse
 from urllib import response
-from rest_framework import api_view, permission_classes
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 
 
