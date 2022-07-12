@@ -18,5 +18,7 @@ class producto(models.Model):
     nombreArchivo = models.CharField(max_length=256, verbose_name="Nombre Foto")
     categoria = models.ForeignKey(categoria, on_delete=models.CASCADE, related_name='productos')
 
+
+
 def __str__(self):
     return self.nombreProducto

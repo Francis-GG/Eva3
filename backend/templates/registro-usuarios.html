@@ -38,30 +38,26 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap py-5">
 		      	<div class="img d-flex align-items-center justify-content-center" style="background-image: url('/static/images/plant.jpg');"></div>
-		      	<h3 class="text-center mb-0">Bienvenido</h3>
-		      	<p class="text-center">Ingresa tus credenciales para iniciar sesión</p>
-				  <form id="login-form" class="form" action="/validarUsuario/" method="post">
+		      	
+				  <form id="formulario" class="form" action="" method="post">
 					{% csrf_token %}
 					<div class="form-group">
+					<table>
+						{{ form.as_table }}
+					</table>
 						
-						<label for="email" class="text-info">Email:</label><br>
-						<input type="email" name="email" id="email" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="password" class="text-info">Contraseña:</label><br>
-						<input type="password" name="password" id="password" class="form-control">
-					</div>
-					<br>
-					<div class="form-group">
 					
-						<input type="submit" name="submit" class="btn form-control btn-primary rounded submit px-3" value="Iniciar Sesión">
+					<input type="submit" class="btn form-control btn-primary rounded submit px-3", id="enviar", value="registrarse">
+					<input type="reset" class="btn form-control btn-primary rounded submit px-3", id="limpiar", value="Limpiar">
+
+
 					</div>
 				   
 				</form>
-	          <div class="w-100 text-center mt-4 text">
-	          	<p class="mb-0">No tienes una cuenta ?</p>
-		          <a href="{% url 'registro-usuarios'%}">Registrarse</a>
-	          </div>
+
+			  <div class="alert alert-success" role="alert">
+				  {{mensaje}}
+			  </div>
 	        </div>
 				</div>
 			</div>
